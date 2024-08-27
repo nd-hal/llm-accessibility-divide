@@ -7,6 +7,8 @@ import statsmodels.formula.api as smf
 
 # Load data
 data_path = '/Users/koketch/Desktop/UPDATED1-Shot_FCE-long_data_with_Family.xlsx'
+data_path = 'Data/FCE-long_data_with_Family.xlsx'
+
 data_long = pd.read_excel(data_path)
 
 # Convert columns to categorical
@@ -41,7 +43,7 @@ custom_palette = {
 }
 
 # Define the hue order for the legend
-#hue_order = ["GPT3.5", "GPT4", "GPT4o", "Llama2", "Llama3", "Llama3.1", "Human"]
+hue_order = ["GPT3.5", "GPT4", "GPT4o", "Llama2", "Llama3", "Llama3.1", "Human"]
 
 
 # # Plot 5:Interaction across Prompt Types
@@ -89,7 +91,7 @@ g.set_xticklabels(rotation=45, fontsize=9)
 # g.set(yticks=[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
 g.add_legend(title='Assessor')
 g.tight_layout()
-g.savefig('/Users/koketch/Desktop/1shotassresp.png', dpi=1000)
+g.savefig('plots/1shotassresp.png', dpi=1000)
 plt.show()
 
 #Plot 2: Interaction between Assessor and Prompt Type
@@ -124,7 +126,7 @@ g.set_xticklabels(rotation=45, fontsize=9)
 # g.set(yticks=[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
 g.add_legend(title='Respondent')
 g.tight_layout()
-g.savefig('/Users/koketch/Desktop/1shotpromptresp.png', dpi=1000)
+g.savefig('plots/1shotpromptresp.png', dpi=1000)
 plt.show()
 
 
