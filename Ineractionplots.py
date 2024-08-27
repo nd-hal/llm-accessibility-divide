@@ -6,7 +6,7 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
 # Load data
-data_path = '/Users/koketch/Desktop/UPDATED1-Shot_FCE-long_data_with_Family.xlsx'
+data_path = '/Users/koketch/Desktop/FCE-long_data_with_Family.xlsx'
 data_long = pd.read_excel(data_path)
 
 # Convert columns to categorical
