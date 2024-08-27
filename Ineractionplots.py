@@ -6,7 +6,10 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
 # Load data
-data_path = '/Users/koketch/Desktop/FCE-long_data_with_Family.xlsx'
+data_path = '/Users/koketch/Desktop/FCE-long_data_with_Family.xlsx'# use this file to generate race/age group plots
+#data_path = '/Users/koketch/Desktop/1-ShotHuman-LLMslong-long_data.xlsx' #uncomment this to run/generate assessor/respondent plots with Human included
+#data_path = '/Users/koketch/Desktop/1-ShotLLMslong-long_data.xlsx' #uncomment this to run/generate assessor/respondent plots for LLMs only
+
 data_long = pd.read_excel(data_path)
 
 # Convert columns to categorical
