@@ -6,14 +6,14 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
 # Load data
-data_path = '/Users/koketch/Desktop/FCE-long_data_with_Family.xlsx'# use this file to generate race/age group plots
-#data_path = '/Users/koketch/Desktop/1-ShotHuman-LLMslong-long_data.xlsx' #uncomment this to run/generate assessor/respondent plots with Human included
-#data_path = '/Users/koketch/Desktop/1-ShotLLMslong-long_data.xlsx' #uncomment this to run/generate assessor/respondent plots for LLMs only
+#data_path = 'Data/FCE-long_data_with_Family.xlsx'# use this file to generate race/age group plots
+data_path = 'Data/1-ShotHuman-LLMslong_data.xlsx' #uncomment this to run/generate assessor/respondent plots with Human included
+#data_path = 'Data/1-ShotLLMslong_data.xlsx' #uncomment this to run/generate assessor/respondent plots for LLMs only
 
 data_long = pd.read_excel(data_path)
 
 # Convert columns to categorical
-data_long['Age Bias'] = pd.Categorical(data_long['Age Bias'])
+#data_long['Age Bias'] = pd.Categorical(data_long['Age Bias'])
 data_long['Assessor'] = pd.Categorical(data_long['Assessor'], categories=["GPT3.5", "GPT4", "GPT4o", "Llama2", "Llama3", "Llama3.1"])
 data_long['Prompt_ID'] = pd.Categorical(data_long['Prompt_ID'])
 data_long['Prompt_Type'] = pd.Categorical(data_long['Prompt_Type'])
@@ -143,6 +143,33 @@ g.set_xticklabels(rotation=45, fontsize=9)
 g.add_legend(title='Assessor')
 g.tight_layout()
 plt.show()
+
+
+
+# Load data
+data_path = 'Data/FCE-long_data_with_Family.xlsx'# use this file to generate race/age group plots
+#data_path = 'Data/1-ShotHuman-LLMslong_data.xlsx' #uncomment this to run/generate assessor/respondent plots with Human included
+#data_path = 'Data/1-ShotLLMslong_data.xlsx' #uncomment this to run/generate assessor/respondent plots for LLMs only
+
+data_long = pd.read_excel(data_path)
+
+# Convert columns to categorical
+data_long['Age Bias'] = pd.Categorical(data_long['Age Bias'])
+data_long['Assessor'] = pd.Categorical(data_long['Assessor'], categories=["GPT3.5", "GPT4", "GPT4o", "Llama2", "Llama3", "Llama3.1"])
+data_long['Prompt_ID'] = pd.Categorical(data_long['Prompt_ID'])
+data_long['Prompt_Type'] = pd.Categorical(data_long['Prompt_Type'])
+
+# Simplify group variable
+data_long['Group'] = data_long['Prompt_Type'].astype(str)
+
+# Ensure data consistency
+print("Data length:", len(data_long))
+print("Maximum index:", data_long.index.max())
+print("Number of duplicates:", data_long.duplicated().sum())
+
+# Reset the index of df
+data_long.reset_index(drop=True, inplace=True)
+
 
 # Plot 5:Interaction across Prompt Types
 g = sns.catplot(data=data_long, x='Assessor', y='∆ Score', hue='Age Group', col='Prompt_Type', kind='point',
