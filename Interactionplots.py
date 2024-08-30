@@ -49,7 +49,7 @@ g.set_axis_labels('Assessment Model', 'Score')
 g.set_xticklabels(rotation=45, fontsize=9)
 g.add_legend(title='Respondent')
 g.tight_layout()
-g.savefig('/Users/koketch/Desktop/1shotassresp.png', dpi=1000)
+g.savefig('plots/1shotassresp.png', dpi=1000)
 plt.show()
 
 # Figure 3b: Interaction between Respondent and Prompt Type
@@ -60,7 +60,7 @@ g.set_axis_labels('Prompt Type', 'Score')
 g.set_xticklabels(rotation=45, fontsize=9)
 g.add_legend(title='Respondent')
 g.tight_layout()
-g.savefig('/Users/koketch/Desktop/1shotpromptresp.png', dpi=1000)
+g.savefig('plots/1shotpromptresp.png', dpi=1000)
 plt.show()
 
 
