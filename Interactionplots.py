@@ -167,7 +167,17 @@ def generate_fig5():
 
     # Figure 5:Interaction across Prompt Types
     # JL: I've commented out the below as we aren't using it at the moment...
-    """
+    markers = ["o", "^", "s", "p", "*", "h", "D"]
+    linestyles = ["-", "--", "-.", ":", "-", "-.", ":"]
+
+    # Hue order for the legend
+    hue_order = ["GPT3.5", "GPT4", "GPT4o", "Llama2", "Llama3", "Llama3.1", "Human"]
+    # Custom palette, markers
+    custom_palette = {
+        "Old": "darkorange",
+        "Young": "steelblue",
+    }
+
     g = sns.catplot(data=data_long, x='Assessor', y='∆ Score', hue='Age Group', col='Prompt_Type', kind='point',
                     palette=custom_palette, height=4, aspect=1.5, markers=markers, linestyles=linestyles, linewidth=1.3)
     # increase the thickness of the lines
@@ -177,16 +187,50 @@ def generate_fig5():
             line.set_linewidth(1.3)
     g.fig.suptitle('Interaction Effect between Assessment Models, Age, and Prompt Types', y=0.95, fontsize=12)
     g.set_axis_labels('Assessment Model', '∆ Score')
+    g.set_titles("{col_name}")
     g.set_xticklabels(rotation=90, fontsize=9)
     g.set(ylim=(-0.2, 0.3))
     g.set(yticks=[-0.2,-0.1, 0, 0.1, 0.2, 0.3])
     g.fig.set_size_inches(14, 4)
     g.fig.tight_layout(rect=[0, 0, 0.95, 0.95])
     # g.add_legend(title="Age_Group")
-    g.savefig('plots/interactionsPrompt.png', dpi=1000)
-    #plt.show()
-    """
 
+    #g.add_legend(title='Race')
+    sns.move_legend(
+        g, "lower center",
+        bbox_to_anchor=(.5, -0.1), ncol=7, frameon=False,
+    )
+    g.savefig('plots/interactionsPromptAge.png', dpi=1000)
+    #plt.show()
+
+    # Custom palette, markers
+    custom_palette = {
+        "Non-Asian": "darkorange",
+        "Asian": "steelblue",
+    }
+
+    g = sns.catplot(data=data_long, x='Assessor', y='∆ Score', hue='Race', col='Prompt_Type', kind='point',
+                    palette=custom_palette, height=4, aspect=1.5, markers=markers, linestyles=linestyles, linewidth=1.3)
+    # increase the thickness of the lines
+    for ax in g.axes.flatten():
+        ax.grid(True, which='both', linestyle='-', color='gray', linewidth=0.3)
+        for line in ax.get_lines():
+            line.set_linewidth(1.3)
+    g.fig.suptitle('Interaction Effect between Assessment Models, Race, and Prompt Types', y=0.95, fontsize=12)
+    g.set_axis_labels('Assessment Model', '∆ Score')
+    g.set_xticklabels(rotation=90, fontsize=9)
+    g.set(ylim=(-0.2, 0.3))
+    g.set_titles("{col_name}")
+    g.set(yticks=[-0.2,-0.1, 0, 0.1, 0.2, 0.3])
+    g.fig.set_size_inches(14, 4)
+    g.fig.tight_layout(rect=[0, 0, 0.95, 0.95])
+    # g.add_legend(title="Age_Group")
+    sns.move_legend(
+        g, "lower center",
+        bbox_to_anchor=(.5, -0.1), ncol=7, frameon=False,
+    )
+    g.savefig('plots/interactionsPromptRace.png', dpi=1000)
+    #plt.show()
 
 
 generate_fig4()
