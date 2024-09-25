@@ -11,8 +11,8 @@ output_costs = [21.4, 1012.11, 296.63, 41.0691, 38.9646, 20.7449]
 
 # Converting costs to smaller units for clarity
 # JL: set the values as their true values, we deal with scaling later
-input_costs_usd = [x * 1000 for x in input_costs]
-output_costs_usd = [x * 1000 for x in output_costs]
+input_costs_usd = [x  for x in input_costs]
+output_costs_usd = [x for x in output_costs]
 
 # Plot
 fig, ax = plt.subplots(figsize=(6, 4))
@@ -78,6 +78,7 @@ ax.set_xlabel('Model', fontweight='bold')
 
 # Set y-axis limit
 #ax.set_ylim(0, 2500)
+#ax.set_ylim(0, 3.5)
 ax.set_yscale('log')
 
 # Remove Legend
