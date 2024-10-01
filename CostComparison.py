@@ -73,13 +73,26 @@ ax.spines["bottom"].set_bounds(0, len(models))
 
 # Title and labels
 #ax.set_title('Comparison of Input and Output Costs for Various Language Models', fontsize=10)
-ax.set_ylabel('Cost (log USD)', fontweight='bold')
-ax.set_xlabel('Model', fontweight='bold')
+ax.set_ylabel('Cost (USD)') #, fontweight='bold')
+ax.set_xlabel('Model') #, fontweight='bold')
 
 # Set y-axis limit
 #ax.set_ylim(0, 2500)
 #ax.set_ylim(0, 3.5)
+
+points = [0, 1, 5]
+labels = [1, 10, 100, 1000, 10000, 100000]
+
+
+
 ax.set_yscale('log')
+#plt.yticks(points, labels)
+
+points = ax.get_yticks()
+legs = ax.get_yticklabels()
+print(points)
+print(legs)
+
 
 # Remove Legend
 #ax.legend()
@@ -87,6 +100,7 @@ ax.set_yscale('log')
 # Show plot
 plt.xticks()  # Rotate model names for better visibility
 plt.yticks()
+ax.set_yticklabels(labels)
 # remove grid
 #plt.grid(True)
 plt.savefig('plots/costv2.png', dpi=1000)
