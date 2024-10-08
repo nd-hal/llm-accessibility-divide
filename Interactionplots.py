@@ -65,7 +65,10 @@ def generate_fig4():
         sns.pointplot,
         markers=markers, 
         linestyles=linestyles, 
-        linewidth=1.3
+        linewidth=1.3,
+        dodge=0.4,
+        markersize=5,
+        alpha=0.5
     )
 
     #plt.grid(True, which='both', color='gray', linewidth=0.3)
@@ -234,4 +237,4 @@ def generate_fig5():
 
 
 generate_fig4()
-generate_fig5()
+#generate_fig5()
