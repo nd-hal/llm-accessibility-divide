@@ -6,8 +6,8 @@ from ollama import generate
 
 # Load/read the input file
 input_file = './Data/Llama3-70B_generated_data.xlsx'
-output_file = '/Data//Olmo2-13B_generatedResponse_data.xlsx'
-temp_output_file = '/Data/Olmo2-13B_generatedResponseTEMP_data.xlsx'
+output_file = './Data//Olmo2-13B_generatedResponse_data.xlsx'
+temp_output_file = './Data/Olmo2-13B_generatedResponseTEMP_data.xlsx'
 df = pd.read_excel(input_file)
 
 # Prompts are in column 5(index 4)
@@ -19,11 +19,9 @@ df['Response'] = df['Response'].astype(str)
 system_prompt = "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI that provides responses to essay prompts. Your task is to respond to the provided prompt with a complete response."
 
 options = {
-        "max_tokens": 2000,  
         "temperature": 0.7,
         "top_p": 0.95,
         "frequency_penalty": 1.0,
-        "stream": False,
 }
 
 modelName = "olmo2:13b"
