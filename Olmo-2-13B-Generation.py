@@ -2,49 +2,39 @@ import pandas as pd
 import json
 import time
 
-from llama_cpp import Llama
+from vllm import LLM, SamplingParams
 
 # Load/read the input file
-input_file = './Data/Llama3-70B_generated_data.xlsx'
-output_file = './Data//Olmo2-13B_generatedResponse_data.xlsx'
+input_file = './Data/llm_prompts.xlsx'
+output_file = './Data/Olmo2-13B_generatedResponse_data.xlsx'
 temp_output_file = './Data/Olmo2-13B_generatedResponseTEMP_data.xlsx'
 df = pd.read_excel(input_file)
 
+# Ensure the 'Response' column set to string type. Throwing an error if not specified
+df["Response"] = ""
+df['Response'] = df['Response'].astype(str)
 
+# load the LLM model
+llm = LLM(
+    model="allenai/OLMo-2-1124-13B-Instruct",
+    max_model_len=4096,
+)
 
-llm = Llama.from_pretrained(
-    repo_id="allenai/OLMo-2-1124-13B-Instruct-GGUF",
-    filename="*F16.gguf",
-    verbose=False,
-    n_gpu_layers=-1,
-    n_ctx=4096
+# Create a sampling params object.
+sampling_params = SamplingParams(
+    temperature=0.7, 
+    top_p=0.95,
+    frequency_penalty= 1.0,
+    max_tokens= 2000,
 )
 
 system_prompt = "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI that provides responses to essay prompts. Your task is to respond to the provided prompt with a complete response."
 
-
-
 # Prompts are in column 5(index 4)
-prompts = df.iloc[:, 4]
+prompts = df["Prompt"]
 
-# Ensure the 'Response' column set to string type. Throwing an error if not specified
-df['Response'] = df['Response'].astype(str)
-
-
-options = {
-        "temperature": 0.7,
-        "top_p": 0.95,
-        "frequency_penalty": 1.0,
-}
-
-modelName = "olmo2:13b"
-
-# Function to generate response 
-def generate_response(prompt):
-
-    try:
-        response = llm.create_chat_completion(
-            messages=[
+def create_conversation(prompt):
+    msg = [
                 {
                 "role": "system",
                 "content": system_prompt
@@ -52,50 +42,26 @@ def generate_response(prompt):
                 {"role": "user",
                  "content": prompt
                 }
-            ],
-            max_tokens= 2000,  
-            temperature= 0.7,
-            top_p= 0.95,
-            frequency_penalty= 1.0
-        )
+    ]
+    return msg
 
-        response_data = response["choices"][0]["message"]["content"]
+conversations = [create_conversation(prompt) for prompt in prompts]
 
-        return response_data
-        # Ensures the response contains the expected structure
-        #if 'choices' in response_data and len(response_data['choices']) > 0 and 'message' in response_data['choices'][0] and 'content' in response_data['choices'][0]['message']:
-        #    content = response_data['choices'][0]['message']['content'].strip()
-        #    # Check if the response ends abruptly and needs continuation
-        #    if content.endswith(('...', 'incomplete', 'more', 'continued', 'in progress')):
-        #        continuation = generate_response(prompt + " [Continue the response]")
-        #        content += continuation
-        #    return content
-        #else:
-        #    print(f"Unexpected response structure: {response_data}")
-        #    return "Error: Unexpected response structure"
-    except Exception as e:
-        print(f"Error generating response for prompt '{prompt}': {e}")
-        return f"Error: {e}"
+print("running inference...")
 
-# Generate responses
-responses = []
-start_row = 2  # starting row
-save_interval = 10  # Save the temporary file every 10 prompts
+outputs = llm.chat(
+    conversations,
+    sampling_params=sampling_params,
+    use_tqdm=True
+)
 
-# add tqdm here
 
-for index, prompt in enumerate(prompts[start_row:], start=start_row):
-    response = generate_response(prompt)
-    responses.append(response)
-    # Add the response to the df immediately to save progress
-    df.at[index, 'Response'] = response
-    # Delay between API calls
-    #time.sleep(1)  
+print("parsing responses")
 
-    # Save a temporary output file every 'save_interval' runs
-    if (index - start_row + 1) % save_interval == 0:
-        df.to_excel(temp_output_file, index=False)
-        print(f"Temporary output saved after {index - start_row + 1} prompts to", temp_output_file)
+responses = [output.outputs[0].text.strip() for output in outputs]
+
+df["Response"] = responses
+
 
 # Save the final df to the output file
 df.to_excel(output_file, index=False)
