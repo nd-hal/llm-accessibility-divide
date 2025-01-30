@@ -20,10 +20,10 @@ if 'Olmo2-13B' not in df.columns:
 
 llm = Llama.from_pretrained(
     repo_id="allenai/OLMo-2-1124-13B-Instruct-GGUF",
-    filename="*F16_0.gguf",
+    filename="*F16.gguf",
     verbose=False,
     n_gpu_layers=-1,
-    n_ctx=4096
+    n_ctx=8192
 )
 
 system_prompt = "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI. You are a virtual grading assistant. Directly provide a numeric score explicitly formatted as 'Score: [number]'."
@@ -33,7 +33,7 @@ options = {
         "temperature": 0.7,
         "top_p": 0.95,
         "frequency_penalty": 1.0,
-	    "num_ctx":4096,
+	    "num_ctx":8192,
         #"stream": False,
 }
 
