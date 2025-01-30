@@ -20,7 +20,7 @@ llm = Llama.from_pretrained(
     n_ctx=4096
 )
 
-system_prompt = "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI. You are a virtual grading assistant. Directly provide a numeric score explicitly formatted as 'Score: [number]'."
+system_prompt = "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI that provides responses to essay prompts. Your task is to respond to the provided prompt with a complete response."
 
 
 
