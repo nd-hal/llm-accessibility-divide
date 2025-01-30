@@ -14,8 +14,8 @@ df = pd.read_excel(input_file)
 instructions_column = df.iloc[:, 7]
 
 # Ensure the 'Llama3.1-70B_1-Shot' column is present and set to numeric type
-if 'Llama3.1_1-Shot' not in df.columns:
-    df['Llama3.1_1-Shot'] = pd.Series(dtype='float64')
+if 'Olmo2-13B' not in df.columns:
+    df['Olmo2-13B'] = pd.Series(dtype='float64')
 
 
 
@@ -26,6 +26,7 @@ options = {
         "temperature": 0.7,
         "top_p": 0.95,
         "frequency_penalty": 1.0,
+	"num_ctx":4096,
         #"stream": False,
 }
 
@@ -41,7 +42,7 @@ def generate_score(instruction):
             options=options
         )
         content = response["response"]
-        
+        #print(content)
         # Extract the numeric score from the response content
         score_start = content.find("Score:") + len("Score:")
         score_str = content[score_start:].strip().split()[0]
@@ -63,7 +64,7 @@ for index, instruction in enumerate(instructions_column[start_row:end_row], star
     score = generate_score(instruction)
     print(f"Score for index {index}: {score}")  # Debug print to see the parsed score
     # Add the score to the df immediately to save progress
-    df.at[index, 'Llama3.1_1-Shot'] = score
+    df.at[index, 'Olmo2-13B'] = score
     print(f"Updated df at index {index} with score {score}")  # Debug print to confirm df update
     # Delay between API calls
     time.sleep(1) 
@@ -77,3 +78,4 @@ for index, instruction in enumerate(instructions_column[start_row:end_row], star
 df.to_excel(output_file, index=False)
 
 print("Scores have been generated and saved to", output_file)
+
