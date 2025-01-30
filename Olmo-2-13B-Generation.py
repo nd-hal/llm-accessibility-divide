@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import time
 
-from ollama import generate
+from llama_cpp import Llama
 
 # Load/read the input file
 input_file = './Data/Llama3-70B_generated_data.xlsx'
@@ -10,13 +10,26 @@ output_file = './Data//Olmo2-13B_generatedResponse_data.xlsx'
 temp_output_file = './Data/Olmo2-13B_generatedResponseTEMP_data.xlsx'
 df = pd.read_excel(input_file)
 
+
+
+llm = Llama.from_pretrained(
+    repo_id="allenai/OLMo-2-1124-13B-Instruct-GGUF",
+    filename="*F16_0.gguf",
+    verbose=False,
+    n_gpu_layers=-1,
+    n_ctx=4096
+)
+
+system_prompt = "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI. You are a virtual grading assistant. Directly provide a numeric score explicitly formatted as 'Score: [number]'."
+
+
+
 # Prompts are in column 5(index 4)
 prompts = df.iloc[:, 4]
 
 # Ensure the 'Response' column set to string type. Throwing an error if not specified
 df['Response'] = df['Response'].astype(str)
 
-system_prompt = "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI that provides responses to essay prompts. Your task is to respond to the provided prompt with a complete response."
 
 options = {
         "temperature": 0.7,
@@ -30,14 +43,24 @@ modelName = "olmo2:13b"
 def generate_response(prompt):
 
     try:
-        response = generate(
-            model=modelName, 
-            prompt=prompt,
-            system=system_prompt,
-            options=options
+        response = llm.create_chat_completion(
+            messages=[
+                {
+                "role": "system",
+                "content": system_prompt
+                },
+                {"role": "user",
+                 "content": prompt
+                }
+            ],
+            max_tokens= 2000,  
+            temperature= 0.7,
+            top_p= 0.95,
+            frequency_penalty= 1.0
         )
-        #print(response['response'])
-        response_data = response["response"]
+
+        response_data = response["choices"][0]["message"]["content"]
+
         return response_data
         # Ensures the response contains the expected structure
         #if 'choices' in response_data and len(response_data['choices']) > 0 and 'message' in response_data['choices'][0] and 'content' in response_data['choices'][0]['message']:
