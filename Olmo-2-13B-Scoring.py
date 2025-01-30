@@ -26,7 +26,7 @@ llm = LLM(
 )
 
 # Create a sampling params object.
-guided_decoding_params = GuidedDecodingParams(regex="Score: \d+(\.*\d*)")
+guided_decoding_params = GuidedDecodingParams(regex=r"Score: \d+(\.*\d*)")
 sampling_params = SamplingParams(
     temperature=0.7, 
     top_p=0.95,
@@ -61,18 +61,18 @@ outputs = llm.chat(
 
 def extract_scores(output):
     content = output.outputs[0].text.strip()
-    try:
-        score_start = content.find("Score:") + len("Score:")
-        score_str = content[score_start:].strip().split()[0]
-        score = float(score_str)
-    except (ValueError, IndexError) as e:
-        print(f"Error parsing score: {e}")
-        score = None
-    except Exception as e:
-        print(f"API call failed: {e}")
-        score = None
-    return score
-
+    #try:
+    #    score_start = content.find("Score:") + len("Score:")
+    #    score_str = content[score_start:].strip().split()[0]
+    #    score = float(score_str)
+    #except (ValueError, IndexError) as e:
+    #    print(f"Error parsing score: {e}")
+    #    score = None
+    #except Exception as e:
+    #    print(f"API call failed: {e}")
+    #    score = None
+    #return score
+    return content
 
 df["Olmo2-13B"] = [extract_scores(output) for output in outputs]
 
