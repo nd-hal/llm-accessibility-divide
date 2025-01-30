@@ -14,7 +14,7 @@ df = pd.read_excel(input_file)
 
 llm = Llama.from_pretrained(
     repo_id="allenai/OLMo-2-1124-13B-Instruct-GGUF",
-    filename="*F16_0.gguf",
+    filename="*F16.gguf",
     verbose=False,
     n_gpu_layers=-1,
     n_ctx=4096
