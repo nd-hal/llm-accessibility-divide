@@ -1,15 +1,13 @@
 import pandas as pd
 import json
 import time
-from llamaapi import LlamaAPI
 
-# Initialize API Key
-llama = LlamaAPI("key")
+from ollama import generate
 
 # Load and read the input files
-input_file = "/Users/koketch/Desktop/IT 3-Shot/LLM Generated Text/1-Shot/1-ShotHuman_generated_data.xlsx"
-output_file = "/Users/koketch/Desktop/IT 3-Shot/LLM Generated Text/1-Shot/1-ShotHuman_scored by llama3dot1.xlsx"
-temp_output_file = "/Users/koketch/Desktop/1-ShotHuman_generated_dataTEMP.xlsx"
+input_file = "./Data/1-ShotHuman_generated_data.xlsx"
+output_file = "./Data/1-ShotHuman_scored_by_Olmo2_13B.xlsx"
+temp_output_file = "./Data/1-ShotHuman_generated_dataTEMP.xlsx"
 df = pd.read_excel(input_file)
 
 # Essays, instructions, and rubrics are in the 7th column
@@ -19,25 +17,30 @@ instructions_column = df.iloc[:, 7]
 if 'Llama3.1_1-Shot' not in df.columns:
     df['Llama3.1_1-Shot'] = pd.Series(dtype='float64')
 
-# Function to generate score 
-def generate_score(instruction):
-    api_request_json = {
-        "model": "llama3.1-70b",  # Specify the model 
-        "messages": [
-            {"role": "system", "content": "You are a virtual llama grading assistant. Directly provide a numeric score explicitly formatted as 'Score: [number]'."},
-            {"role": "user", "content": instruction},
-        ],
-        "max_tokens": 1000,
+
+
+system_prompt = "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI. You are a virtual grading assistant. Directly provide a numeric score explicitly formatted as 'Score: [number]'."
+
+options = {
+        #"max_tokens": 2000,  
         "temperature": 0.7,
         "top_p": 0.95,
         "frequency_penalty": 1.0,
-        "stream": False,
-    }
+        #"stream": False,
+}
+
+modelName = "olmo2:13b"
+
+# Function to generate score 
+def generate_score(instruction):
     try:
-        response = llama.run(api_request_json)
-        response_data = response.json()
-        content = response_data['choices'][0]['message']['content'].strip()
-        print(f"Response content: {content}")  # Debug print to see the raw response
+        response = generate(
+            model=modelName, 
+            prompt=instruction,
+            system=system_prompt,
+            options=options
+        )
+        content = response["response"]
         
         # Extract the numeric score from the response content
         score_start = content.find("Score:") + len("Score:")
