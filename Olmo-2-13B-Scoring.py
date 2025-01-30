@@ -3,6 +3,7 @@ import json
 import time
 
 from vllm import LLM, SamplingParams
+from vllm.sampling_params import GuidedDecodingParams
 
 # Load and read the input files
 input_file = "./Data/1-ShotHuman_generated_data.xlsx"
@@ -25,11 +26,13 @@ llm = LLM(
 )
 
 # Create a sampling params object.
+guided_decoding_params = GuidedDecodingParams(regex="Score: \d+(\.*\d*)")
 sampling_params = SamplingParams(
     temperature=0.7, 
     top_p=0.95,
     frequency_penalty= 1.0,
     max_tokens= 2000,
+    guided_decoding=guided_decoding_params
 )
 
 system_prompt = "You are a virtual grading assistant. Directly provide a numeric score explicitly formatted as 'Score: [number]'."
