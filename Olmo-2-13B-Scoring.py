@@ -22,8 +22,8 @@ if 'Olmo2-13B' not in df.columns:
 # load the LLM model
 llm = LLM(
     model="allenai/OLMo-2-1124-13B-Instruct",
-    max_model_len=8192,
-    rope_scaling={"factor":2.0,"rope_type":"dynamic"}
+    max_model_len=7168		,
+    rope_scaling={"factor":1.75,"rope_type":"dynamic"}
 )
 
 # Create a sampling params object.
