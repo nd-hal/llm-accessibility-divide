@@ -54,8 +54,8 @@ def grade_model_outputs(modelName):
     df = pd.read_excel(input_file)
     #df = df[df["Olmo2-13B"].str.startswith("!") | df["Olmo2-13B"].isna()]
 
-    assert(len(df["OneShotRubric"]) > 0)
-    print(len(df["OneShotRubric"]))
+    assert(len(df["1-Shot Rubric"]) > 0)
+    print(len(df["1-Shot Rubric"]))
 
     # Essays, instructions, and rubrics are in the 7th column
     zeroShots = df["Response"]
