@@ -58,7 +58,7 @@ def grade_model_outputs(modelName):
     print(len(df["1-Shot Rubric"]))
 
     # Essays, instructions, and rubrics are in the 7th column
-    zeroShots = df["Response"]
+    zeroShots = df["0-Shot Rubric"]
     oneShots = df["1-Shot Rubric"]
 
     outputDF = df[["Prompt ID","Prompt Type","Prompt Variation","Iteration"]]
@@ -113,9 +113,14 @@ def grade_model_outputs(modelName):
     print("Scores have been generated and saved to", output_file)
 
 
-print("grading Qwen2.5")
-grade_model_outputs("Qwen2.5-72B")
 
-print("grading deepseek")
-grade_model_outputs("Deepseek-R1")
+modelnames = [
+    "GPT3.5", "GPT4", "GPT4o", "Llama2-70B", "Llama3-70B", "Llama3.1", "Qwen2.5-72B", "Deepseek-R1"
+]
+
+
+for m in modelnames:
+    print(f"grading {m}")
+    grade_model_outputs(m)
+
 
