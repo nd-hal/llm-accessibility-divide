@@ -124,7 +124,10 @@ modelnames = [
 
 
 for m in modelnames:
-    print(f"grading {m}")
-    grade_model_outputs(m, llm)
+    try:
+      print(f"grading {m}")
+      grade_model_outputs(m, llm)
+    except:
+      print(f"Error scoring for model: {m}")
 
 
