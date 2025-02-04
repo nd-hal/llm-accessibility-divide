@@ -43,7 +43,7 @@ def extract_scores(output):
     return content
 
 
-def grade_model_outputs(modelName):
+def grade_model_outputs(modelName, llm):
 
     input_file = f"./Data/{modelName}_generated_data.xlsx"
     output_file = f"./Data/{modelName}_graded_by_Olmo2_13B.csv"
@@ -67,13 +67,7 @@ def grade_model_outputs(modelName):
     outputDF['Olmo2-13B-zeroshot'] = pd.Series(dtype='float64')
     outputDF['Olmo2-13B-oneshot'] = pd.Series(dtype='float64')
 
-    # load the LLM model
-    # no rope scaling for now bc it doesnt work...
-    llm = LLM(
-        model="allenai/OLMo-2-1124-13B-Instruct",
-        #max_model_len=8192,
-        #rope_scaling={"factor":2,"rope_type":"linear"}
-    )
+    
 
     # Create a sampling params object.
     guided_decoding_params = GuidedDecodingParams(regex=r"Score: \d+(\.*\d*)")
@@ -113,9 +107,17 @@ def grade_model_outputs(modelName):
     print("Scores have been generated and saved to", output_file)
 
 
+# load the LLM model
+# no rope scaling for now bc it doesnt work...
+llm = LLM(
+    model="allenai/OLMo-2-1124-13B-Instruct",
+    #max_model_len=8192,
+    #rope_scaling={"factor":2,"rope_type":"linear"}
+)
 
 modelnames = [
-    "GPT3.5", "GPT4", "GPT4o", "Llama2-70B", "Llama3-70B", "Llama3.1", "Qwen2.5-72B", "Deepseek-R1"
+    #"GPT3.5", 
+    "GPT4", "GPT4o", "Llama2-70B", "Llama3-70B", "Llama3.1", "Qwen2.5-72B", "Deepseek-R1"
 ]
 
 
