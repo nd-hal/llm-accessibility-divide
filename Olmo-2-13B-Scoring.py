@@ -125,6 +125,6 @@ modelnames = [
 
 for m in modelnames:
     print(f"grading {m}")
-    grade_model_outputs(m)
+    grade_model_outputs(m, llm)
 
 
