@@ -52,6 +52,7 @@ def grade_model_outputs(modelName, llm):
     #temp_output_file = "./Data/1-ShotHuman_generated_dataTEMP.xlsx"
 
     df = pd.read_excel(input_file)
+    df = df[~pd.isna(df["Prompt Type"])]
     #df = df[df["Olmo2-13B"].str.startswith("!") | df["Olmo2-13B"].isna()]
 
     assert(len(df["1-Shot Rubric"]) > 0)
