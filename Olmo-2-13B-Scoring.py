@@ -117,7 +117,9 @@ llm = LLM(
 
 modelnames = [
     #"GPT3.5", 
-    "GPT4", "GPT4o", "Llama2-70B", "Llama3-70B", "Llama3.1", "Qwen2.5-72B", "Deepseek-R1"
+    "GPT4", 
+    "GPT4o", 
+    #"Llama2-70B", "Llama3-70B", "Llama3.1", "Qwen2.5-72B", "Deepseek-R1"
 ]
 
 
