@@ -52,7 +52,7 @@ def grade_model_outputs(modelName, llm):
     #temp_output_file = "./Data/1-ShotHuman_generated_dataTEMP.xlsx"
 
     df = pd.read_excel(input_file)
-    df = df[~pd.isna(df["Prompt Type"])]
+    df = df[~pd.isna(df["Response"])]
     #df = df[df["Olmo2-13B"].str.startswith("!") | df["Olmo2-13B"].isna()]
 
     assert(len(df["1-Shot Rubric"]) > 0)
@@ -62,13 +62,16 @@ def grade_model_outputs(modelName, llm):
     zeroShots = df["0-Shot Rubric"]
     oneShots = df["1-Shot Rubric"]
 
-    outputDF = df[["Prompt ID","Prompt Type","Prompt Variation","Iteration"]]
+    if "Llama2" in modelName:
+        outputDF = df[["Prompt ", "Response"]]
+    elif "Human" in modelName:
+        outputDF = df[["Prompt_ID", "Prompt_Type","Response"]]
+    else:
+        outputDF = df[["Prompt ID","Prompt Type","Prompt Variation","Iteration"]]
 
     # Ensure the 'Llama3.1-70B_1-Shot' column is present and set to numeric type
     outputDF['Olmo2-13B-zeroshot'] = pd.Series(dtype='float64')
     outputDF['Olmo2-13B-oneshot'] = pd.Series(dtype='float64')
-
-    
 
     # Create a sampling params object.
     guided_decoding_params = GuidedDecodingParams(regex=r"Score: \d+(\.*\d*)")
@@ -120,15 +123,17 @@ modelnames = [
     #"GPT3.5", 
     #"GPT4", 
     #"GPT4o", 
-    "Llama2-70B", "Llama3-70B", "Llama3.1", "Qwen2.5-72B", "Deepseek-R1"
+    #"Llama2-70B", 
+    "Human", "Olmo2-13B" 
+    #"Llama3-70B", "Llama3.1", "Qwen2.5-72B", "Deepseek-R1"
 ]
 
 
 for m in modelnames:
-    try:
+    #try:
       print(f"grading {m}")
       grade_model_outputs(m, llm)
-    except:
-      print(f"Error scoring for model: {m}")
+    #except:
+    #  print(f"Error scoring for model: {m}")
 
 
