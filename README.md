@@ -27,20 +27,20 @@ Includes argumentative, response, and narrative essays
 Both datasets contain prompts, rubrics, and ground-truth human scores, used for LLM assessment.
 
 #### Model Selection
-Closed-source Models
-GPT-4
-GPT-4 Omni
-GPT-3.5
-Open Models (Weights Available)
-LLaMa 2 (70B)
-LLaMa 3 (70B)
-LLaMa 3.1 (405B)
-DeepSeek-R1 (671B)
-Qwen2.5 (72B)
-Open-source Models (Weights + Training Data Available)
-OLMo 2 (13B)
+Closed-source Models  
+- GPT-4
+- GPT-4 Omni
+- GPT-3.5  
+Open Models (Weights Available)  
+Llama 2 (70B)  
+Llama 3 (70B)  
+Llama 3.1 (405B)  
+DeepSeek-R1 (671B)  
+Qwen2.5 (72B)  
+Open-source Models (Weights + Training Data Available)  
+OLMo 2 (13B)  
 
-How Essays Were Generated
+## How Essays Were Generated
 We prompted each LLM with 150 unique essay prompts covering six writing types from ASAP and FCE.
 
 Zero-shot setting: LLMs received only the prompt (no examples).
