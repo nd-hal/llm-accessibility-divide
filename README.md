@@ -45,17 +45,18 @@ Open-source Models (Weights + Training Data Available)
 ## How Essays Were Generated
 We prompted each LLM with 150 unique essay prompts covering six writing types from ASAP and FCE.
 
-Zero-shot setting: LLMs received only the prompt (no examples).
-Few-shot setting: LLMs received the prompt + three human-scored essays as references.
-Each model generated ~1,537 essays (GPT-4 = 1,486, GPT-4 Omni = 1,527).
+Zero-shot setting: LLMs received only the prompt (no examples).  
+Few-shot setting: LLMs received the prompt + three human-scored essays as references.  
+Each model generated ~1,537 essays (GPT-4 = 1,486, GPT-4 Omni = 1,527).  
+
 APIs Used:
 
-GPT models: OpenAI API
-LLaMa models: Replicate API & LLaMa API
-Qwen2.5 & DeepSeek: DeepInfra API
-OLMo: Run locally using olmo.script
+GPT models: OpenAI API  
+LLaMa models: Replicate API & LLaMa API  
+Qwen2.5 & DeepSeek: DeepInfra API  
+OLMo: Run locally using olmo.script  
 
-How Essays Were Scored
+How Essays Were Scored  
 We used the same LLMs for automated scoring of human and LLM-generated essays.
 
 Zero-shot assessment: LLMs received the rubric and prompt but no examples.
