@@ -58,18 +58,22 @@ OLMo: Run locally using olmo.script
 ## How Essays Were Scored  
 We used the same LLMs for automated scoring of human and LLM-generated essays.
 
-Zero-shot assessment: LLMs received the rubric and prompt but no examples.
+Zero-shot assessment: LLMs received the rubric and prompt but no examples.  
 Few-shot setting: LLMs received the prompt + three human-scored essays as references.  
-Evaluation Metrics
+
+Evaluation Metrics  
 We measured LLM vs. Human score agreement using:
 
-Error Metrics: Mean Squared Error (MSE), Mean Absolute Error (MAE)
-Agreement Metrics: Quadratic Weighted Kappa (QWK), Pearson Correlation Coefficient (PCC), Spearman’s Rank Correlation (SRC)
-Fairness Analysis
-We used ANOVA models to analyze biases in age (young/old) and race (Asian/non-Asian) from the FCE dataset.
-Cost Analysis
-Token costs for inference were calculated using API pricing.
-Open LLMs were up to 37x cheaper than GPT-4.
+Error Metrics: Mean Squared Error (MSE), Mean Absolute Error (MAE)  
+Agreement Metrics: Quadratic Weighted Kappa (QWK), Pearson Correlation Coefficient (PCC), Spearman’s Rank Correlation (SRC)  
+
+Fairness Analysis  
+
+We used ANOVA models to analyze biases in age (young/old) and race (Asian/non-Asian) from the FCE dataset.  
+
+Cost Analysis  
+Token costs for inference were calculated using API pricing.  
+Open LLMs were up to 37x cheaper than GPT-4.  
 
 Setup & Installation
 This project uses Poetry for dependency management.
