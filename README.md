@@ -37,7 +37,7 @@ Open Models (Weights Available)
 - Llama 3.1 (405B)  
 - DeepSeek-R1 (671B)  
 - Qwen2.5 (72B)  
-Open-source Models (Weights + Training Data Available)  
+Open-source Models (Weights + Training Data Available) 
 - OLMo 2 (13B)  
 
 ## How Essays Were Generated
