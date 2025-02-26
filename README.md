@@ -61,21 +61,21 @@ We used the same LLMs for automated scoring of human and LLM-generated essays.
 Zero-shot assessment: LLMs received the rubric and prompt but no examples.  
 Few-shot setting: LLMs received the prompt + three human-scored essays as references.  
 
-Evaluation Metrics  
+#### Evaluation Metrics  
 We measured LLM vs. Human score agreement using:
 
 Error Metrics: Mean Squared Error (MSE), Mean Absolute Error (MAE)  
 Agreement Metrics: Quadratic Weighted Kappa (QWK), Pearson Correlation Coefficient (PCC), Spearman’s Rank Correlation (SRC)  
 
-Fairness Analysis  
+#### Fairness Analysis  
 
 We used ANOVA models to analyze biases in age (young/old) and race (Asian/non-Asian) from the FCE dataset.  
 
-Cost Analysis  
+#### Cost Analysis  
 Token costs for inference were calculated using API pricing.  
 Open LLMs were up to 37x cheaper than GPT-4.  
 
-Setup & Installation
+#### Setup & Installation
 This project uses Poetry for dependency management.
 
 1. Download pipx: https://pipx.pypa.io/stable/installation/
@@ -99,7 +99,7 @@ poetry run python Scripts/Qwen2.5Generation.py. #replace with any of the generat
 ```{python}
 poetry run python Scripts/Llama3.1Scoring.py. #replace with any of the scoring files
 ```
-Citing This Work
+#### Citing This Work
 @article{your_reference,
   author = {Anonymous},
   title = {Bridging the LLM Accessibility Divide: How Open-source Models Compare in Terms of Performance, Fairness, and Cost},
@@ -107,11 +107,11 @@ Citing This Work
   journal = {arXiv}
 }
 
-Contributors
-Kezia Oketch
-John Lalor
-Yi Yang
-Ahmed Abbasi
+#### Contributors
+Kezia Oketch  
+John Lalor  
+Yi Yang  
+Ahmed Abbasi  
 
-Acknowledgments
+#### Acknowledgments
 This research is supported by the University of Notre Dame's Human-centered Analytics Lab (HAL).
