@@ -2,6 +2,7 @@
 This repository contains the code, datasets, and analysis for our study on the accessibility and performance of open, open-source, and closed large language models (LLMs) in the context of Automated Essay Scoring (AES). Our work systematically compares the performance, fairness, and cost-effectiveness of various LLMs for both essay assessment and generation.
 
 ## Repository Structure
+```
 📂 Data/              # Contains human-written and LLM-generated essays
 📂 Scripts/           # Python scripts for essay generation, scoring, and analysis
 📜 .DS_Store         # macOS system file (can be ignored)
@@ -10,9 +11,9 @@ This repository contains the code, datasets, and analysis for our study on the a
 📜 olmo.script       # Script for running OLMo locally
 📜 poetry.lock       # Dependency lock file for reproducibility
 📜 pyproject.toml    # Configuration for managing dependencies with Poetry
-
+```
 ## Data
-We use two human-generated essay datasets:
+We use two benchmark datasets:
 
 #### ASAP (Automated Student Assessment Prize)
 
