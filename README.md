@@ -19,14 +19,14 @@ We use two human-generated essay datasets:
 12,979 essays across 8 prompts
 Scoring ranges from 1-6, 0-4, 0-30, 0-60
 Includes argumentative, response, and narrative essays
-FCE (Cambridge Learner Corpus - First Certificate in English)
 
+#### FCE (Cambridge Learner Corpus - First Certificate in English)
 2,466 essays spanning 5 genres
 Scoring based on English proficiency
 Includes letter, commentary, suggestion essays
 Both datasets contain prompts, rubrics, and ground-truth human scores, used for LLM assessment.
 
-Model Selection
+#### Model Selection
 Closed-source Models
 GPT-4
 GPT-4 Omni
