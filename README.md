@@ -17,14 +17,13 @@ We use two benchmark datasets:
 
 #### ASAP (Automated Student Assessment Prize)
 
-12,979 essays across 8 prompts
-Scoring ranges from 1-6, 0-4, 0-30, 0-60
+- 12,979 essays across 8 prompts
+- Scoring ranges from 1-6, 0-4, 0-30, 0-60
 Includes argumentative, response, and narrative essays
 
 #### FCE (Cambridge Learner Corpus - First Certificate in English)
-2,466 essays spanning 5 genres
-Scoring based on English proficiency
-Includes letter, commentary, suggestion essays
+- 2,466 essays spanning 5 genres
+- Includes letter, commentary, suggestion essays
 Both datasets contain prompts, rubrics, and ground-truth human scores, used for LLM assessment.
 
 #### Model Selection
