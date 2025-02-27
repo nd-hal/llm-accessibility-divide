@@ -99,16 +99,16 @@ poetry run python Scripts/Qwen2.5Generation.py. #replace with any of the generat
 ```{python}
 poetry run python Scripts/Llama3.1Scoring.py. #replace with any of the scoring files
 ```
-#### Citing This Work
+## Citing This Work
 ```
 TO BE ADDED!
 }
 ```
-#### Contributors
+## Contributors
 Kezia Oketch  
 John Lalor  
 Yi Yang  
 Ahmed Abbasi  
 
-#### Acknowledgments
+## Acknowledgments
 This research is supported by the University of Notre Dame's Human-centered Analytics Lab (HAL).
