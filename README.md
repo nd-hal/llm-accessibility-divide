@@ -101,11 +101,7 @@ poetry run python Scripts/Llama3.1Scoring.py. #replace with any of the scoring f
 ```
 #### Citing This Work
 ```
-@article{your_reference,
-  author = {Oketch et al.},
-  title = {Bridging the LLM Accessibility Divide: How Open-source Models Compare in Terms of Performance, Fairness, and Cost},
-  year = {2025},
-  journal = {arXiv}
+TO BE ADDED!
 }
 ```
 #### Contributors
