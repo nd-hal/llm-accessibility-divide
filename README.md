@@ -43,15 +43,15 @@ Open-source Models (Weights + Training Data Available)
 - OLMo 2 (13B)  
 
 ## How Essays Were Generated
-We prompted each LLM with 150 unique essay prompts covering six writing types from ASAP and FCE.
+We prompted each LLM with unique essay prompts covering six writing types from ASAP and FCE.
 
-The generation was done under Zero-shot setting: LLMs received only the prompt (no examples).  
+The generation was done under Zero-shot setting to remain consistent with the human generation: LLMs received only the prompt (no examples).  
 Each model generated ~1,537 essays (GPT-4 = 1,486, GPT-4 Omni = 1,527).  
 
 APIs Used:
 
 GPT models: OpenAI API  
-LLaMa models: Replicate API & LLaMa API  
+LLaMa models: Replicate API & Llama API  
 Qwen2.5 & DeepSeek: DeepInfra API  
 OLMo: Run locally using olmo.script  
 
