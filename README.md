@@ -100,13 +100,14 @@ poetry run python Scripts/Qwen2.5Generation.py. #replace with any of the generat
 poetry run python Scripts/Llama3.1Scoring.py. #replace with any of the scoring files
 ```
 #### Citing This Work
+```
 @article{your_reference,
-  author = {Anonymous},
+  author = {Oketch et al.},
   title = {Bridging the LLM Accessibility Divide: How Open-source Models Compare in Terms of Performance, Fairness, and Cost},
   year = {2025},
   journal = {arXiv}
 }
-
+```
 #### Contributors
 Kezia Oketch  
 John Lalor  
