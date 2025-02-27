@@ -3,8 +3,8 @@ This repository contains the code, datasets, and analysis for our study on the a
 
 ## Repository Structure
 ```
-📂 Data/              # Contains human-written and LLM-generated essays
-📂 Scripts/           # Python scripts for essay generation, scoring, and analysis
+📂 Data/             # Contains human-written and LLM-generated essays
+📂 Scripts/          # Python scripts for essay generation, scoring, and analysis
 📜 .DS_Store         # macOS system file (can be ignored)
 📜 .gitattributes    # Git configuration file
 📜 README.md         # This file
@@ -18,7 +18,7 @@ We use two benchmark datasets:
 #### ASAP (Automated Student Assessment Prize)
 
 - 12,979 essays across 8 prompts
-- Scoring ranges from 1-6, 0-4, 0-30, 0-60
+- Scoring ranges from 1-6, 0-4, 0-30, 0-60  
 Includes argumentative, response, and narrative essays
 
 #### FCE (Cambridge Learner Corpus - First Certificate in English)
