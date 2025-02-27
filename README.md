@@ -106,9 +106,9 @@ TO BE ADDED!
 ```
 ## Contributors
 Kezia Oketch  
-John Lalor  
-Yi Yang  
-Ahmed Abbasi  
+John Lalor    
+Yi Yang    
+Ahmed Abbasi    
 
 ## Acknowledgments
 This research is supported by the University of Notre Dame's Human-centered Analytics Lab (HAL).
