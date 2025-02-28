@@ -14,11 +14,8 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 os.environ['REPLICATE_API_TOKEN'] = "key was here"
 
 # Load file
-#df = pd.read_csv('/Users/koketch/Desktop/3-ShotFCE_scores2.csv', dtype=str)
 
-#df = pd.read_csv('/Users/koketch/Desktop/IT 3-Shot/ASAP/ASAP_Set1_3-Shot.csv', dtype=str, encoding='ISO-8859-1')
-#df = pd.read_csv('/Users/koketch/Desktop/IT 3-Shot/LLM Generated Text/LLaMA3-70B_generated_data.xlsx', dtype=str, encoding='ISO-8859-1', nrows=1800)
-df = pd.read_excel('/Users/koketch/Desktop/IT 3-Shot/LLM Generated Text/0-Shot/Llama3.1-70B_generated_data.xlsx', dtype=str, nrows=1540)
+df = pd.read_excel('./Data/Llama3.1-70B_generated_data.xlsx', dtype=str, nrows=1540)
 
 # Convert all entries to string and strip them
 df['0-Shot Rubric'] = df['0-Shot Rubric'].apply(lambda x: str(x).strip() if pd.notna(x) else "")
@@ -34,7 +31,7 @@ def save_dataframe(df, path):
 # Define a function to handle termination
 def signal_handler(signal, frame):
     logging.info("Signal received, saving df before exit...")
-    save_dataframe(df, '/Users/koketch/Desktop/IT 3-Shot/Llama3.1-70B_generated_dataTEMP.csv')
+    save_dataframe(df, './Data/Llama3.1-70B_generated_dataTEMP.csv')
     exit(0)
 
 # Register signal handlers
@@ -153,10 +150,10 @@ with ThreadPoolExecutor(max_workers=10) as executor:
         df.at[index, 'Llama2_0-Shot Output'] = full_output
         count += 1
         if count % 500 == 0:
-            temp_output_path = '/Users/koketch/Desktop/IT 3-Shot/LLM Generated Text/Llama3.1-70B_generated_dataTEMP.csv'
+            temp_output_path = './Data/LLM Generated Text/Llama3.1-70B_generated_dataTEMP.csv'
             save_dataframe(df, temp_output_path)
             logging.info(f"Temporary output file saved after processing {count} prompts at {temp_output_path}")
 
 # Save the final results
-final_output_path = '/Users/koketch/Desktop/Llama3.1-70B_generated_data.csv'
+final_output_path = './Data/Llama3.1-70B_generated_data.csv'
 save_dataframe(df, final_output_path)
