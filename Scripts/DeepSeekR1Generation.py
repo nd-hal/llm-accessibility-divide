@@ -9,7 +9,7 @@ os.environ['REPLICATE_API_TOKEN'] = "Add your key here"
 
 # Load the Excel file and clean column names
 try:
-    df = pd.read_excel('./Data/Data/Deepseek-R1_generated_data.xlsx')
+    df = pd.read_excel('./Data/Deepseek-R1_generated_data.xlsx')
     df.columns = [col.strip() for col in df.columns]
     print(f"Loaded Excel file with {len(df)} rows.")
 except Exception as e:

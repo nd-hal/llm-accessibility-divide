@@ -10,9 +10,6 @@ Original file is located at
 # !pip install transformers
 
 ##Human & LLMs###
-# Mount Google Drive to access the input file and save outputs
-from google.colab import drive
-drive.mount('/content/drive')
 
 import torch
 from sklearn.manifold import TSNE
@@ -20,7 +17,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the embeddings
-path_to_embeddings = '.Data/Essay_embeddings2.pt'
+path_to_embeddings = './Data/Essay_embeddings2.pt'
 essay_embeddings = torch.load(path_to_embeddings)
 
 # Define the full list of sources and their counts
@@ -94,7 +91,7 @@ def plot_tsne(reduced_embeddings, sources, title, fontsize=20):
                  horizontalalignment='center', fontsize=fontsize)
 
     # Save the plot with high resolution
-    plt.savefig('/content/drive/My Drive/Colab Notebooks/tsne.png', dpi=1000, bbox_inches='tight')
+    plt.savefig('./tsne.png', dpi=1000, bbox_inches='tight')
 
     # Show the plot
     plt.show()

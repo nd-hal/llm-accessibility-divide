@@ -17,13 +17,13 @@ This repository contains the code, datasets, and analysis for our study on the a
 # Data
 We use two benchmark datasets:
 
-## ASAP (Automated Student Assessment Prize)
+## Automated Student Assessment Prize (ASAP)
 
 - 12,979 essays across 8 prompts
 - Scoring ranges from 1-6, 0-4, 0-30, 0-60  
 Includes argumentative, response, and narrative essays
 
-## FCE (Cambridge Learner Corpus - First Certificate in English)
+## Cambridge Learner Corpus - First Certificate in English (FCE)
 
 - 2,466 essays spanning 5 genres
 - Includes letter, commentary, suggestion essays  

@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 def generate_fig5():
 
     # Load data
-    data_path = '.Data/New 1-ShotHuman-LLMsLongData.xlsx' 
+    data_path = './Data/New 1-ShotHuman-LLMsLongData.xlsx' 
     data_long = pd.read_excel(data_path)
 
     # Convert columns to categorical
@@ -107,7 +107,7 @@ def generate_fig5():
 def generate_fig3():
     ###FAIRNESS/BIAS PLOTS###
     # Load data
-    data_path = '.Data/NEW-1-Shot_FCE-long_data_with_Age-Race.xlsx'
+    data_path = './Data/NEW-1-Shot_FCE-long_data_with_Age-Race.xlsx'
     data_long = pd.read_excel(data_path)
 
     # Convert columns to categorical
@@ -262,7 +262,7 @@ def generate_fig3():
     )
     #g.fig.subplots_adjust(top=0.5)  # Increase space below the figure
 
-    g.savefig('/Users/koketch/Desktop/LLMs_Accessibility_Divide/Results/interactionsPromptRace.png', dpi=2000)
+    g.savefig('./interactionsPromptRace.png', dpi=2000)
     plt.show()
 
 
