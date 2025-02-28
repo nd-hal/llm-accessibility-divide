@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 def generate_fig4():
 
     # Load data
-    data_path = 'Data/1-ShotHuman-LLMslong_data.xlsx'  
+    data_path = './Data/1-ShotHuman-LLMslong_data.xlsx'  
     data_long = pd.read_excel(data_path)
 
     # Convert columns to categorical
