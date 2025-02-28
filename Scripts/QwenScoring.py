@@ -68,7 +68,7 @@ with ThreadPoolExecutor(max_workers=5) as executor:
 
         # Save temporary results every 1500 essays
         if counter % 2000 == 0:
-            temp_output_path = f'/afs/crc.nd.edu/user/k/koketch/QwenHumanTEMP_generated_dat\
+            temp_output_path = f'./Data/QwenHumanTEMP_generated_dat\
 a{counter // 500}.xlsx'
             df.loc[list(results.keys()), 'Qwen_0-Shot'] = pd.Series(results)
             df.to_csv(temp_output_path, index=False)
@@ -78,7 +78,7 @@ a{counter // 500}.xlsx'
 df.loc[list(results.keys()), 'Qwen-0-Shot'] = pd.Series(results)
 
 # Save final results
-output_path = '/afs/crc.nd.edu/user/k/koketch/QwenHuman_generated_dat\
+output_path = './Data/QwenHuman_generated_dat\
 a.xlsx'
 try:
     df.to_csv(output_path, index=False)
