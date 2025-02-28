@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Set up DeepInfra OpenAI client
 openai = OpenAI(
-    api_key="5Gocw9C0FXamPPdMVj3bEiyKQMehXJbO",  
+    api_key="Add your key",  
     base_url="https://api.deepinfra.com/v1/openai"
 )
 
@@ -17,8 +17,7 @@ start_row = 0
 end_row = 15445  
 
 # Load the file and slice the DataFrame
-df = pd.read_excel('/afs/crc.nd.edu/user/k/koketch/Human_generated_dat\
-a.xlsx')
+df = pd.read_excel('./Data/Human_generated_data.xlsx')
 df = df.iloc[start_row:end_row]
 logging.info(f"Loaded DataFrame with {df.shape[0]} rows from row {start_row} to {end_row}.")
 
