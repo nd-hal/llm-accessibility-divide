@@ -1,7 +1,9 @@
-## Overview
+# Overview
+
 This repository contains the code, datasets, and analysis for our study on the accessibility and performance of open, open-source, and closed large language models (LLMs) in the context of Automated Essay Scoring (AES). Our work systematically compares the performance, fairness, and cost-effectiveness of various LLMs for both essay assessment and generation.
 
-## Repository Structure
+# Repository Structure
+
 ```
 📂 Data/             # Contains human-written and LLM-generated essays
 📂 Scripts/          # Python scripts for essay generation, scoring, and analysis
@@ -11,21 +13,24 @@ This repository contains the code, datasets, and analysis for our study on the a
 📜 poetry.lock       # Dependency lock file for reproducibility
 📜 pyproject.toml    # Configuration for managing dependencies with Poetry
 ```
-## Data
+
+# Data
 We use two benchmark datasets:
 
-#### ASAP (Automated Student Assessment Prize)
+## ASAP (Automated Student Assessment Prize)
 
 - 12,979 essays across 8 prompts
 - Scoring ranges from 1-6, 0-4, 0-30, 0-60  
 Includes argumentative, response, and narrative essays
 
-#### FCE (Cambridge Learner Corpus - First Certificate in English)
+## FCE (Cambridge Learner Corpus - First Certificate in English)
+
 - 2,466 essays spanning 5 genres
 - Includes letter, commentary, suggestion essays  
 Both datasets contain prompts, rubrics, and ground-truth human scores, used for LLM assessment.
 
-#### Model Selection
+# Model Selection
+
 Closed-source Models  
 - GPT-4
 - GPT-4 Omni
@@ -41,7 +46,8 @@ Open Models (Weights Available)
 Open-source Models (Weights + Training Data Available) 
 - OLMo 2 (13B)  
 
-## How Essays Were Generated
+# How Essays Were Generated
+
 We prompted each LLM with unique essay prompts covering six writing types from ASAP and FCE.
 
 The generation was done under Zero-shot setting to remain consistent with the human generation: LLMs received only the prompt (no examples).  
@@ -58,27 +64,31 @@ OLMo: Run locally using th efollowing command:
 poetry run python Scripts/Olmo-2-13B-Scoring.py
 ```
 
-## How Essays Were Scored  
+# How Essays Were Scored  
+
 We used the same LLMs for automated scoring of human and LLM-generated essays.
 
 Zero-shot assessment: LLMs received the rubric and prompt but no examples.  
 Few-shot setting: LLMs received the prompt + three human-scored essays as references.  
 
-#### Evaluation Metrics  
+## Evaluation Metrics  
+
 We measured LLM vs. Human score agreement using:
 
 Error Metrics: Mean Squared Error (MSE), Mean Absolute Error (MAE)  
 Agreement Metrics: Quadratic Weighted Kappa (QWK), Pearson Correlation Coefficient (PCC), Spearman’s Rank Correlation (SRC)  
 
-#### Fairness Analysis  
+## Fairness Analysis  
 
 We used ANOVA models to analyze biases in age (young/old) and race (Asian/non-Asian) from the FCE dataset.  
 
-#### Cost Analysis  
+## Cost Analysis  
+
 Token costs for inference were calculated using API pricing.  
 Open LLMs were up to 37x cheaper than GPT-4.  
 
-#### Setup & Installation
+# Setup & Installation
+
 This project uses Poetry for dependency management.
 
 1. Download pipx: https://pipx.pypa.io/stable/installation/
@@ -92,26 +102,32 @@ poetry run python Scripts/CostComparison.py
 4. To generate the score and delta score figures
 
 ```{python}
-poetry run python Interactionplots.py
+poetry run python Scripts/Interactionplots.py
 ```
 5. To run essay generation
+
 ```{python}
 poetry run python Scripts/Qwen2.5Generation.py. #replace with any of the generation files
 ```
 6. To run essay scoring
+
 ```{python}
 poetry run python Scripts/Llama3.1Scoring.py. #replace with any of the scoring files
 ```
-## Citing This Work
+
+# Citing This Work
+
 ```
 TO BE ADDED!
-}
+
 ```
-## Contributors
+# Contributors
+
 Kezia Oketch  
 John Lalor    
 Yi Yang    
 Ahmed Abbasi    
 
-## Acknowledgments
+# Acknowledgments
+
 This research is supported by the University of Notre Dame's Human-centered Analytics Lab (HAL).
