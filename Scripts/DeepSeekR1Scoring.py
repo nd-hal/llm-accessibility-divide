@@ -14,8 +14,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 os.environ['REPLICATE_API_TOKEN'] = "Add your key here"
 
 # Load file
-df = pd.read_excel('/afs/crc.nd.edu/user/k/koketch/Human_generated_dat\
-a.xlsx')
+df = pd.read_excel('./Data/Human_generated_data.xlsx')
 
 # Convert all entries to string and strip them
 df['0-Shot Rubric'] = df['0-Shot Rubric'].apply(lambda x: str(x).strip() if pd.notna(x) else "")
