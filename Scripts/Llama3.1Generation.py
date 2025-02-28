@@ -7,9 +7,9 @@ from llamaapi import LlamaAPI
 llama = LlamaAPI("Key was here")
 
 # Load/read the input file
-input_file = '.Data/Llama3.1-70B_generated_data.xlsx'
-output_file = '.Data/Llama3.1-70B_generatedResponse_data.xlsx'
-temp_output_file = '.Data/Llama3.1-70B_generatedResponseTEMP_data.xlsx'
+input_file = './Data/Llama3.1-70B_generated_data.xlsx'
+output_file = './Data/Llama3.1-70B_generatedResponse_data.xlsx'
+temp_output_file = './Data/Llama3.1-70B_generatedResponseTEMP_data.xlsx'
 df = pd.read_excel(input_file)
 
 # Prompts are in column 5(index 4)
