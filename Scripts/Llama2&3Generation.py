@@ -11,7 +11,7 @@ os.environ['REPLICATE_API_TOKEN'] = "key was here"
 client = replicate.Client()
 # Load the Excel file and clean column names
 try:
-    df = pd.read_excel('/Users/koketch/Desktop/LLaMA-7B_generated_data.xlsx')
+    df = pd.read_excel('./Data/Llama-70B_generated_data.xlsx')
     df.columns = [col.strip() for col in df.columns]
 except Exception as e:
     print(f"Failed to load the Excel file: {str(e)}")
@@ -49,9 +49,9 @@ for index, row in df.iterrows():
     
     # Save the df every 20 iterations
     if (index + 1) % 20 == 0:
-        df.to_excel(f'/Users/koketch/Desktop/TEMPLLaMA-7B_generated_data_{index + 1}.xlsx', index=False)
+        df.to_excel(f'./Data/TEMPLlama2-70B_generated_data_{index + 1}.xlsx', index=False)
         #print(f"Intermediate file saved at index {index + 1}")
 
 # Save the final version of the df
-df.to_excel('/Users/koketch/Desktop/UpdatedLLaMA-7B_generated_data_final.xlsx', index=False)
+df.to_excel('./Data/UpdatedLlama-70B_generated_data_final.xlsx', index=False)
 print("Final file saved")
