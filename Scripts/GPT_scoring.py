@@ -15,7 +15,7 @@ start_row = 2
 end_row = 1540  
 
 # Load the file and slice the df
-df = pd.read_excel('/Users/koketch/Desktop/IT 3-Shot/LLM Generated Text/1-Shot/Llama3.1-70B_generated_data.xlsx', dtype=str)
+df = pd.read_excel('./Data/Llama3.1-70B_generated_data.xlsx', dtype=str)
 df = df.iloc[start_row:end_row]
 logging.info(f"Loaded DataFrame with {df.shape[0]} rows from row {start_row} to {end_row}.")
 
@@ -61,7 +61,7 @@ with ThreadPoolExecutor(max_workers=5) as executor:
             logging.info(f"Processed essay at index {index}, Score: {score}")
             counter += 1
         if counter % 500 == 0:
-            temp_output_path = f'/Users/koketch/Desktop/IT 3-Shot/LLM Generated Text/3.1temp_output_{counter // 500}.csv'
+            temp_output_path = f'./Data/3.1temp_output_{counter // 500}.csv'
             df.loc[list(results.keys()), 'GPT4o_1-Shot'] = pd.Series(results)
             df.to_csv(temp_output_path, index=False)
             logging.info(f"Temporary output file saved after processing {counter} essays at {temp_output_path}")
@@ -70,7 +70,7 @@ with ThreadPoolExecutor(max_workers=5) as executor:
 df.loc[list(results.keys()), 'GPT4o-1Shot'] = pd.Series(results)
 
 # Save the final results
-output_path = '/Users/koketch/Desktop//IT 3-Shot/LLM Generated Text/1-ShotLlama3.1_generated_dataFINALE.csv'
+output_path = './Data/1-ShotLlama3.1_generated_dataFINALE.csv'
 try:
     df.to_csv(output_path, index=False)
     logging.info(f"Output file saved successfully at {output_path}")
