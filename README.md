@@ -5,7 +5,6 @@ This repository contains the code, datasets, and analysis for our study on the a
 ```
 📂 Data/             # Contains human-written and LLM-generated essays
 📂 Scripts/          # Python scripts for essay generation, scoring, and analysis
-📜 .DS_Store         # macOS system file (can be ignored)
 📜 .gitattributes    # Git configuration file
 📜 README.md         # This file
 📜 olmo.script       # Script for running OLMo locally
@@ -53,7 +52,11 @@ APIs Used:
 GPT models: OpenAI API  
 LLaMa models: Replicate API & Llama API  
 Qwen2.5 & DeepSeek: DeepInfra API  
-OLMo: Run locally using olmo.script  
+OLMo: Run locally using th efollowing command:
+
+```python
+poetry run python Scripts/Olmo-2-13B-Scoring.py
+```
 
 ## How Essays Were Scored  
 We used the same LLMs for automated scoring of human and LLM-generated essays.

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-#$ -q gpu@@coba-h100 
-#$ -pe smp 24
-#$ -l gpu_card=4
-
-poetry run python Olmo-2-13B-Scoring.py
