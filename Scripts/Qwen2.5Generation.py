@@ -11,8 +11,8 @@ client = openai.OpenAI(
 
 # Load the input file
 input_file = './Data/Qwen2.5_generated_data.xlsx'
-output_file = '.Data/Qwen2.5_generatedResponse_data.xlsx'
-temp_output_file = '.Data/Qwen2.5_generatedResponseTEMP_data.xlsx'
+output_file = './Data/Qwen2.5_generatedResponse_data.xlsx'
+temp_output_file = './Data/Qwen2.5_generatedResponseTEMP_data.xlsx'
 
 try:
     df = pd.read_excel(input_file)
