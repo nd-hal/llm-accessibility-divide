@@ -7,9 +7,9 @@ from llamaapi import LlamaAPI
 llama = LlamaAPI("Add your key here")
 
 # Load and read the input files
-output_file = ".Data/OlmobyLlama3.1_scored.xlsx"
-temp_output_file = ".Data/3.1__dataTEMPSCORE.xlsx"
-input_file = '.Data/Olmo2-13B_generated_data.xlsx'
+output_file = "./Data/OlmobyLlama3.1_scored.xlsx"
+temp_output_file = "./Data/3.1__dataTEMPSCORE.xlsx"
+input_file = './Data/Olmo2-13B_generated_data.xlsx'
 df = pd.read_excel(input_file)
 
 # Essays, instructions, and rubrics are in the 7th column
