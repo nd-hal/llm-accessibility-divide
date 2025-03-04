@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-## STEP 1: generate what is currently figure 3 
+## generate what is currently figure 3 
 # two-panel plot with one legend at the bottom
 
 def generate_fig5():
@@ -100,7 +100,6 @@ def generate_fig5():
     for ax in g.axes.flatten():
         ax.set_xticklabels(ax.get_xticklabels(), rotation=0, fontsize=12)
 
-    #g.savefig('/Users/koketch/Desktop/LLMs_Accessibility_Divide/Results/1shotplot.png', dpi=2000)
     plt.show()
 
 
@@ -154,7 +153,6 @@ def generate_fig3():
     #g.set_xticklabels(fontsize=9)
     g.set(ylim=(-0.1, 0.15)) 
     g.set(yticks=[-0.1,-0.05, 0, 0.05, 0.10, 0.15])
-    #g.savefig('plots/interactionsAge.png', dpi=1000)
     plt.show()
 
     # Custom palette, markers
@@ -230,7 +228,6 @@ def generate_fig3():
         bbox_to_anchor=(.5, -0.02), ncol=9, frameon=False,
     )
     
-    #g.savefig('/Users/koketch/Desktop/LLMs_Accessibility_Divide/Results/interactionsPromptAge.png', dpi=2000)
     plt.show()
 
     # Custom palette, markers
