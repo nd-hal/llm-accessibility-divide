@@ -12,6 +12,7 @@ This repository contains the code, datasets, and analysis for our study on the a
 📜 olmo.script       # Script for running OLMo locally
 📜 poetry.lock       # Dependency lock file for reproducibility
 📜 pyproject.toml    # Configuration for managing dependencies with Poetry
+📜 requirements.txt  # Contains a list of dependencies required to run the LLM-based scripts
 ```
 
 # Data
