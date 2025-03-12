@@ -57,13 +57,15 @@ Each model generated ~1,537 essays (GPT-4 = 1,486, GPT-4 Omni = 1,527).
 APIs Used:
 
 GPT models: OpenAI API  
-LLaMa models: Replicate API & Llama API  
-Qwen2.5 & DeepSeek: DeepInfra API  
-OLMo: Run locally using th efollowing command:
-
+Llama models & DeepSeek-r1: Replicate API & Llama API  
+Qwen2.5: DeepInfra API  
+OLMo: Run locally using the following command:
 ```python
 poetry run python Scripts/Olmo-2-13B-Scoring.py
 ```
+## Note
+**OLMo uses vLLM, which runs generation & scoring locally.**  
+Be sure to use a machine with sufficient resources (GPU, memory, etc.).
 
 # How Essays Were Scored  
 
@@ -90,7 +92,7 @@ Open LLMs were up to 37x cheaper than GPT-4.
 
 # Setup & Installation
 
-This project uses Poetry for dependency management.
+This project uses **Poetry** for dependency management, in addition to the dependencies listed in `requirements.txt`.
 
 1. Download pipx: https://pipx.pypa.io/stable/installation/
 2. Install poetry: https://python-poetry.org/docs/#installing-with-pipx
@@ -108,12 +110,12 @@ poetry run python Scripts/Interactionplots.py
 5. To run essay generation
 
 ```{python}
-poetry run python Scripts/Qwen2.5Generation.py. #replace with any of the generation files
+poetry run python Scripts/UnifiedGeneration.py
 ```
 6. To run essay scoring
 
 ```{python}
-poetry run python Scripts/Llama3.1Scoring.py. #replace with any of the scoring files
+poetry run python Scripts/UnifiedScoring.py
 ```
 
 # Citing This Work
