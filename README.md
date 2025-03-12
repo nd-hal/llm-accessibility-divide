@@ -67,6 +67,17 @@ poetry run python Scripts/Olmo-2-13B-Scoring.py
 **OLMo uses vLLM, which runs generation & scoring locally.**  
 Be sure to use a machine with sufficient resources (GPU, memory, etc.).
 
+## Setting Up API Key Environment Variables
+
+To configure API keys, run the following commands in your terminal:
+
+```bash
+export OPENAI_API_KEY="your_openai_api_key_here"
+export DEEPINFRA_API_KEY="your_deepinfra_api_key_here"
+export REPLICATE_API_TOKEN="your_replicate_api_token_here"
+
+⚠️ Security Notice: Avoid hardcoding API keys in scripts. Consider using os.getenv() for better security.
+
 # How Essays Were Scored  
 
 We used the same LLMs for automated scoring of human and LLM-generated essays.
