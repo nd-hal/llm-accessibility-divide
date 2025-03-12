@@ -59,7 +59,7 @@ APIs Used:
 GPT models: OpenAI API  
 Llama models & DeepSeek-r1: Replicate API & Llama API  
 Qwen2.5: DeepInfra API  
-OLMo: Run locally using the following command:
+OLMo: Run locally using the following commands:
 ```python
 poetry run python Scripts/Olmo-2-13B-Scoring.py
 poetry run python Scripts/Olmo-2-13B-Generation.py
