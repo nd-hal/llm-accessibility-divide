@@ -62,6 +62,7 @@ Qwen2.5: DeepInfra API
 OLMo: Run locally using the following command:
 ```python
 poetry run python Scripts/Olmo-2-13B-Scoring.py
+poetry run python Scripts/Olmo-2-13B-Generation.py
 ```
 ## Note
 **OLMo uses vLLM, which runs generation & scoring locally.**  
