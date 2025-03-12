@@ -5,7 +5,6 @@ import argparse
 import openai
 import replicate
 from llamaapi import LlamaAPI
-from vllm import LLM, SamplingParams
 
 # Load API Keys from environment variables
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -26,7 +25,6 @@ MODEL_CONFIG = {
     "Llama-3.1": {"model": "llama3.1-405b", "api": "llamaapi"}, # Also available via Replicate
     "Qwen-2.5": {"model": "Qwen/Qwen2.5-72B-Instruct", "api": "deepinfra"},
     "DeepSeek-R1": {"model": "deepseek-ai/deepseek-r1", "api": "replicate"}, 
-    "Olmo-2-13B": {"model": "allenai/OLMo-2-1124-13B-Instruct", "api": "vllm"},
     "GPT-4": {"model": "gpt-4", "api": "openai"},
     "GPT-4o": {"model": "gpt-4o", "api": "openai"},
     "GPT-3.5": {"model": "gpt-3.5-turbo", "api": "openai"}
