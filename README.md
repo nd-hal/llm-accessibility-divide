@@ -75,6 +75,7 @@ To configure API keys, run the following commands in your terminal:
 export OPENAI_API_KEY="your_openai_api_key_here"
 export DEEPINFRA_API_KEY="your_deepinfra_api_key_here"
 export REPLICATE_API_TOKEN="your_replicate_api_token_here"
+export LLAMA_API_KEY="your_llama_api_key_here"
 ```
 ⚠️ Security Notice: Avoid hardcoding API keys in scripts. Consider using os.getenv() for better security.
 
