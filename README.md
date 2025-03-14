@@ -9,7 +9,6 @@ This repository contains the code, datasets, and analysis for our study on the a
 📂 Scripts/          # Python scripts for essay generation, scoring, and analysis
 📜 .gitattributes    # Git configuration file
 📜 README.md         # This file
-📜 olmo.script       # Script for running OLMo locally
 📜 poetry.lock       # Dependency lock file for reproducibility
 📜 pyproject.toml    # Configuration for managing dependencies with Poetry
 📜 requirements.txt  # Contains a list of dependencies required to run the LLM-based scripts
@@ -59,6 +58,16 @@ APIs Used:
 GPT models: OpenAI API  
 Llama models & DeepSeek-r1: Replicate API & Llama API  
 Qwen2.5: DeepInfra API  
+
+For the above, run the following command to generate/score:
+
+
+```python
+
+
+```
+
+
 OLMo: Run locally using the following commands:
 ```python
 poetry run python Scripts/Olmo-2-13B-Scoring.py
