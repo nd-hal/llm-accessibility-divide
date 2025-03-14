@@ -60,7 +60,7 @@ Llama models & DeepSeek-r1: Replicate API & Llama API
 Qwen2.5: DeepInfra API  
 
 For the above, run the following command to generate/score:  
-> Example commands:
+> Example commands:  
                   1. To generate responses using Llama-2-70B-Chat  
                   2. To score responses using gpt-4  
 
