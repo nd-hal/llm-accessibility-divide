@@ -60,10 +60,14 @@ Llama models & DeepSeek-r1: Replicate API & Llama API
 Qwen2.5: DeepInfra API  
 
 For the above, run the following command to generate/score:
-
+Example commands: 1. To generate responses using Llama-2-70B-Chat
+                  2. To score responses using gpt-4
 
 ```python
+1. poetry run python Scripts/UnifiedGeneration.py --input_file "./Data/Llama3_generated_data.xlsx" --output_file ./Data/Llama3_generated_data.xlsx --model Llama-2 
 
+
+2. poetry run python Scripts/UnifiedScoring.py --input_file "./Data/Llama2_generated_data.xlsx" --output_file ./Data/Llama2_generatedWithScores.xlsx --model GPT-4 
 
 ```
 
