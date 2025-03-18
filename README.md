@@ -148,7 +148,15 @@ poetry run python Scripts/UnifiedScoring.py
 # Citing This Work
 
 ```
-TO BE ADDED!
+@misc{oketch2025bridgingllmaccessibilitydivide,
+      title={Bridging the LLM Accessibility Divide? Performance, Fairness, and Cost of Closed versus Open LLMs for Automated Essay Scoring}, 
+      author={Kezia Oketch and John P. Lalor and Yi Yang and Ahmed Abbasi},
+      year={2025},
+      eprint={2503.11827},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2503.11827}, 
+}
 
 ```
 # Contributors
