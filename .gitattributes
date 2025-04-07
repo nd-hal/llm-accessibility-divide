@@ -3,3 +3,4 @@ Data/New[[:space:]]0-ShotHuman-LLMsLongData.xlsx filter=lfs diff=lfs merge=lfs -
 Data/New[[:space:]]1-ShotHuman-LLMsLongData.xlsx filter=lfs diff=lfs merge=lfs -text
 *.pt filter=lfs diff=lfs merge=lfs -text
 *.xlsx filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
